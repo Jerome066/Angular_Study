@@ -1,0 +1,141 @@
+WINDOWS 11
+
+Angular CLI (Command Line Interface): Ayuda a crear proyectos de forma fácil y rápida y a automatizar el flujo de trabajo de desarrollo, diseñada para ayudar a los desarrolladores a crear, construir , probare implementar aplicaciones de Angular de manera eficiente.
+____________________________________________________________________________
+Instalar NODE JS (Instala también el NPM)
+	En terminal se puede verificar:
+					node --versión
+					npm --version 
+NODE JS: Es un entorno de ejecución de código abierto que permite ejecutar código JavaScript fuera del navegador.
+
+Instalar VisualStudio Code
+
+Instalar GIT (Crear versiones y generar respaldos de manera segura)
+____________________________________________________________________________
+
+Iniciar VisualStudio Code en modo ADMINISTRADOR
+
+____________________________________________________________________________
+En terminal de VSC:
+Crear proyecto en una versión especifica de ANGULAR:
+	npm install -g @angular/cli@19   (-g = global)
+Crear proyecto Angular:
+	ng new nombreProyecto
+Correr proyecto Angular:
+	ng serve -o
+Crear proyectos anteriores a la versión 18 Angular:
+	ng new nombreProyecto --standalone=false
+Verificar la versión instalada
+	ng versión
+
+___________________________________________________________________________
+
+ANGULAR
+
+Componente: Pieza fundamental que representa una parte del UI, cada componente tiene: HTML, CSS y TypeScript
+Interpolación: Utiliza la sintaxis de dobles llaves {{..}} para evaluar expresiones y renderizar el resultado de manera dinámica, se puede mostrar datos de propiedades del componente dentro de la plantilla de manera directa.
+	Se puede:
+		Mostrar datos: Puede mostrar valores de variables, propiedades del componente, o el resultado de una expresión directamente en la vista.
+		Concatenación de cadenas.
+		Evaluación de expresiones simples.
+
+
+
+Componente en linea (inline): Se refiere específicamente a la forma en que el HTML y los estilos de ese componente son declarados. En lugar de vincular un archivo HTML externo mediante templateUri, el código HTML se escribe directamente dentro del archivo TypeScript utilizando comillas invertidas ` y la propiedad template
+
+Ejemplo
+import {Component} from '@angular/core';
+
+@Component({
+  selector: 'app-root', // Nombre del componente, así se llamara 
+  template: `
+	<h1>{{titulo}}</h1> (Atributo A)
+	<p>{{descripcion}}</p> (Atributo B)
+  `,
+  styles: `
+    :host {
+      color: #a144eb;
+    }
+  `,
+})
+export class AppComponent {
+	titulo = 'Componente Basico';
+	descripción = 'Este es un componente simple en Angular'
+}
+
+NOTA: se recomienda como buena practica separar los atributos (HTML, CSS, TS) en sus respectivos archivos
+
+Para crear un nuevo componente con Angular CLI
+	ng generate component nombre-del-componente
+
+	ng g c component nombre-del-componente
+
+
+@Component({
+  selector: 'app-nuevo-componente',
+  imports: [],
+  templateUrl: './nuevo-componente.component.html',
+  styleUrl: './nuevo-componente.component.css'
+})
+export class NuevoComponenteComponent {
+	tituloNuevoComponente = 'Nuevo Componente';
+}
+
+___________________________________________________________________________________
+
+COMPONENTES EN LINEA
+
+
+ng g c componente-inline --inline-template --inline-style --skip-tests 
+
+@Component({
+  selector: 'app-comp-inline',
+  //es Standalone (standalone: true,)
+  imports: [],
+  template: `
+    <p>
+      comp-inline works!
+    </p>
+  `,
+  styles: ``
+})
+export class CompInlineComponent {
+
+}
+
+__________________________________________________________________________________
+
+INTERPOLACIÓN
+
+
+<section>
+    <div class="container">
+        <h2 class="text-center tex-warning">{{title}}</h2>
+        <p>Bienvenido, {{usuario.nombre}}</p>
+        <p>Edad: {{usuario.edad}}</p>
+        <p>{{saludar()}}</p>
+        <p>Dentro de poco tendras: {{usuario.edad + 1}}</p>
+    </div>
+</section>
+
+
+@Component({
+  selector: 'app-interpolacion',
+  imports: [],
+  templateUrl: './interpolacion.component.html',
+  styleUrl: './interpolacion.component.css'
+})
+export class InterpolacionComponent {
+  title = "Componente con interpolación";
+  usuario = {
+    nombre: 'Jorge',
+    edad: 26
+  };
+
+  saludar(){
+    return `Hola, ${this.usuario.nombre}`;
+  }
+}
+
+
+
