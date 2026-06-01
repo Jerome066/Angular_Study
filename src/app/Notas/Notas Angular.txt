@@ -137,5 +137,41 @@ export class InterpolacionComponent {
   }
 }
 
+__________________________________________________________________________________
+BOOTSTRAP
+
+Instalar localmente:
+     npm install bootstrap@latest --save 
+
+Instalar PopperJs (Opcional) [Ayuda a crear menus dinamicos]
+     npm install @popperjs/core --save
 
 
+__________________________________________________________________________________
+ENCAPSULAMIENTO 
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-encapsulamiento',
+  imports: [],
+  templateUrl: './encapsulamiento.component.html',
+  styleUrl: './encapsulamiento.component.css'
+})
+export class EncapsulamientoComponent {
+  private titulo = "Titulo encapsulamiento";
+
+  get mostrarTitulo(){
+    return this.titulo;
+  }
+
+  getTitulo(){
+      return this.titulo
+  }
+}
+
+|. {{ mostrarTitulo }}: Aquí estás accediendo al método get mostrarTitulo 
+como si fuera una propiedad. No necesitas paréntesis porque el getter está diseñado 
+para funcionar como una propiedad. 
+2. {{ getTitulo() }}: Aquí estás llamando al método getTitulo() de forma 
+explícita como un método de encapsulamiento, por lo que necesitas usar paréntesis. 
